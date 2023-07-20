@@ -443,26 +443,6 @@ NEW_BASELINE=${STMP}/${USER}/FV3_RT/REGRESSION_TEST_${RT_COMPILER^^}
 RUNDIR_ROOT=${RUNDIR_ROOT:-${PTMP}/${USER}/FV3_RT}/rt_$$
 mkdir -p ${RUNDIR_ROOT}
 
-while getopts ":cl:mn:dwkreh" opt; do
-  case $opt in
-    m)
-      # redefine RTPWD to point to newly created baseline outputs
-      RTPWD=${NEW_BASELINE}
-      ;;
-    h)
-      usage
-      ;;
-    \?)
-      usage
-      die "Invalid option: -$OPTARG"
-      ;;
-    :)
-      usage
-      die "Option -$OPTARG requires an argument."
-      ;;
-  esac
-done
-
 if [[ $SINGLE_NAME != '' ]]; then
   rt_single
   TESTS_FILE=$RT_SINGLE_CONF
