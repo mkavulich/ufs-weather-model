@@ -134,7 +134,7 @@ export delete_rundir=false
 
 TESTS_FILE='rt.conf'
 
-while getopts ":cl:mn:dw:krepsh" opt; do
+while getopts ":cl:mn:dw:krep:sh" opt; do
   case $opt in
     c)
       CREATE_BASELINE=true
