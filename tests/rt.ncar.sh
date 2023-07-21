@@ -452,9 +452,10 @@ if [[ $TESTS_FILE =~ '35d' ]] || [[ $TESTS_FILE =~ 'weekly' ]]; then
   TEST_35D=true
 fi
 
+INPUT_DATE=20230314
 BL_DATE=20230615
 
-RTPWD=${RTPWD:-$DISKNM/baselines/main-${BL_DATE}/${RT_COMPILER^^}}
+RTPWD=${RTPWD:-$DISKNM/../../baselines/main-${BL_DATE}/${RT_COMPILER^^}}
 
 INPUTDATA_ROOT=${INPUTDATA_ROOT:-$DISKNM/../../input_data/${BL_DATE}}
 INPUTDATA_ROOT_WW3=${INPUTDATA_ROOT}/WW3_input_data_20220624
