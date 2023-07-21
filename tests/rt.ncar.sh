@@ -287,7 +287,7 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   ACCNR=gmtb
   PARTITION=
   dprefix=${dprefix:-/scratch1/BMC/gmtb/CCPP_regression_testing/NCAR_ufs-weather-model}
-  DISKNM=$dprefix
+  DISKNM=$dprefix/RT
   STMP=$dprefix/RT/stmp4
   PTMP=$dprefix/RT/stmp2
 
@@ -456,7 +456,7 @@ BL_DATE=20230615
 
 RTPWD=${RTPWD:-$DISKNM/baselines/main-${BL_DATE}/${RT_COMPILER^^}}
 
-INPUTDATA_ROOT=${INPUTDATA_ROOT:-$DISKNM/input_data/}
+INPUTDATA_ROOT=${INPUTDATA_ROOT:-$DISKNM/../input_data/}
 INPUTDATA_ROOT_WW3=${INPUTDATA_ROOT}/WW3_input_data_20220624
 INPUTDATA_ROOT_BMIC=${INPUTDATA_ROOT_BMIC:-$DISKNM/NCAR/BM_IC-20220207}
 
