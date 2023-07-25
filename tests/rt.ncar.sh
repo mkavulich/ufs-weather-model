@@ -14,7 +14,7 @@ usage() {
   echo "  -c  create new baseline results"
   echo "  -e  use ecFlow workflow manager"
   echo "  -h  display this help"
-  echo "  -k  keep run directory after rt.sh is completed"
+  echo "  -k  keep run directory after $0 is completed"
   echo "  -l  runs test specified in <file>"
   echo "  -m  compare against new baseline results"
   echo "  -n  run single test <name>"
@@ -99,11 +99,11 @@ cleanup() {
   exit
 }
 
-trap '{ echo "rt.sh interrupted"; rt_trap ; }' INT
-trap '{ echo "rt.sh quit"; rt_trap ; }' QUIT
-trap '{ echo "rt.sh terminated"; rt_trap ; }' TERM
-trap '{ echo "rt.sh error on line $LINENO"; cleanup ; }' ERR
-trap '{ echo "rt.sh finished"; cleanup ; }' EXIT
+trap '{ echo "$0 interrupted"; rt_trap ; }' INT
+trap '{ echo "$0 quit"; rt_trap ; }' QUIT
+trap '{ echo "$0 terminated"; rt_trap ; }' TERM
+trap '{ echo "$0 error on line $LINENO"; cleanup ; }' ERR
+trap '{ echo "$0 finished"; cleanup ; }' EXIT
 
 # PATHRT - Path to regression tests directory
 readonly PATHRT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )"
@@ -117,7 +117,7 @@ readonly LOCKDIR="${PATHRT}"/lock
 if mkdir "${LOCKDIR}" ; then
   echo $(hostname) $$ > "${LOCKDIR}/PID"
 else
-  echo "Only one instance of rt.sh can be running at a time"
+  echo "Only one instance of $0 can be running at a time"
   exit 1
 fi
 
@@ -375,6 +375,7 @@ elif [[ $MACHINE_ID = s4.* ]]; then
 
 elif [[ $MACHINE_ID = cheyenne.* ]]; then
 
+  module purge
   export PATH=/glade/p/ral/jntp/tools/miniconda3/4.8.3/envs/ufs-weather-model/bin:/glade/p/ral/jntp/tools/miniconda3/4.8.3/bin:$PATH
   export PYTHONPATH=/glade/p/ral/jntp/tools/miniconda3/4.8.3/envs/ufs-weather-model/lib/python3.8/site-packages:/glade/p/ral/jntp/tools/miniconda3/4.8.3/lib/python3.8/site-packages
   ECFLOW_START=/glade/p/ral/jntp/tools/miniconda3/4.8.3/envs/ufs-weather-model/bin/ecflow_start.sh
