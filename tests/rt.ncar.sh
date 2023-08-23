@@ -286,6 +286,7 @@ elif [[ $MACHINE_ID = hera.* ]]; then
 
   ACCNR=gmtb
   PARTITION=
+  INPUT_DATE=20230314
   dprefix=${dprefix:-/scratch1/BMC/gmtb/CCPP_regression_testing/NCAR_ufs-weather-model}
   DISKNM=$dprefix/RT
   STMP=$dprefix/RT/stmp4
@@ -384,10 +385,11 @@ elif [[ $MACHINE_ID = cheyenne.* ]]; then
   QUEUE=regular
   COMPILE_QUEUE=regular
   PARTITION=
-  dprefix=${dprefix:-/scratch1/BMC/gmtb/CCPP_regression_testing/NCAR_ufs-weather-model}
-  DISKNM=$dprefix
-  STMP=$dprefix
-  PTMP=$dprefix
+  INPUT_DATE=20221101
+  dprefix=${dprefix:-/glade/p/ral/jntp/CCPP_regression_testing/NCAR_ufs-weather-model/}
+  DISKNM=$dprefix/RT
+  STMP=$dprefix/RT
+  PTMP=$dprefix/RT
   SCHEDULER=pbs
   cp fv3_conf/fv3_qsub.IN_cheyenne fv3_conf/fv3_qsub.IN
   cp fv3_conf/compile_qsub.IN_cheyenne fv3_conf/compile_qsub.IN
@@ -452,7 +454,6 @@ if [[ $TESTS_FILE =~ '35d' ]] || [[ $TESTS_FILE =~ 'weekly' ]]; then
   TEST_35D=true
 fi
 
-INPUT_DATE=20230314
 BL_DATE=20230615
 
 RTPWD=${RTPWD:-$DISKNM/../../baselines/main-${BL_DATE}/${RT_COMPILER^^}}
