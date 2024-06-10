@@ -114,7 +114,7 @@ export DLAT_2=0.25
 # ----------------------------------------
 # &atmos_model_nml
 export BLOCKSIZE=32
-export CCPP_SUITE=FV3_global_nest_v1
+export CCPP_SUITE="falcon"
 
 # ----------------------------------------
 # &diag_manager_nml
